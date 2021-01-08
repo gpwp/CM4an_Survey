@@ -1,0 +1,117 @@
+body {
+    background-color: rgb(208, 211, 228);
+}
+
+label {
+    display: inline-block;
+}
+
+.banner-1 { 
+    background-color: black;
+    margin: auto;
+    margin-top: 12px;
+    height: 159.1959798994975px;
+    width: 80%;
+    border-radius: 8px;
+}   
+
+.formContent {
+    /* background-color: rgb(255, 255, 255); */
+    margin: auto;
+    margin-top: 8px;
+    width: 80%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.formExplain { 
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    padding: 24px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+}   
+
+.formSurvey { 
+    background-color: rgb(255, 255, 255);
+    margin: auto;
+    margin-bottom: 12px;
+    padding: 24px;
+    width: 100%;
+    height: auto;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+}   
+
+.formMove {
+    margin: auto;
+    width: 80%;
+    margin-top: 8px;
+    text-align: right;
+}
+
+.formSurveyTitle {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.formSurveyChoice {
+
+}
+
+/* 라디오버튼 */
+.formSurveyChoiceRadio {
+    /* background-color: black; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.formSurveyChoiceRadio:hover {
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* 라디오버튼 외곽 */
+.formSurveyChoiceRadioOuter {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgb(61, 61, 59);
+    border-radius: 50%;
+}
+
+/* 라디오버튼 옆 텍스트 */
+.formSurveyChoicText {
+    margin-left: 10px;
+}
+
+/* Textarea CSS */
+.formSurveyQuestionTextInput {
+    resize: none;
+    overflow: hidden;
+    height: 40px;
+    width: 100%;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: #adbee0;
+}
+
+.formSurveyQuestionTextInput:focus {
+    border-color: green;
+}
+
+.footer-text {
+    margin: auto;
+    margin-top: 12px;
+    height: 30px;
+    width: 80%;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.footer-image {    
+    text-align: center;
+    height: 100px;
+}

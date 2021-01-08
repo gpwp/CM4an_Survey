@@ -1,0 +1,33 @@
+div {
+    background-color: beige;
+    margin: auto;
+}
+.row{
+    float: center;;
+    width: 100%;
+    height: 33%;
+}
+.ksy{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: chartreuse;
+}
+.yjg{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(75, 95, 158);
+}
+.hjh{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(88, 88, 88);
+}
+.gss{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(202, 158, 91);
+}

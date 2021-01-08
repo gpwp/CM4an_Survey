@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= form[0].form_name %></title>
+        <meta name="viewport" content="width=device-width" />
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/style/form.css">
+
+        <script>
+            function textarea_Resize(obj){
+                obj.style.height = "1px";
+                obj.style.height = (12+obj.scrollHeight)+"px";
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="banner-1" style=" text-align: center;">
+                <span style="color: white; font-size: 24px;">이미지 배너(000 x 000)</span>
+            </div>
+            
+            <!-- 설명 시작 및 조사 항목 나열 -->
+            <form action="<%= ( section[0].section_idx ==  count[0][0].section_count ) ? '/submitend' : '/form/'+ (section[0].section_idx + 1) %>" method="POST">
+                <input type="hidden" name="form_idx" value="<%= form[0].form_idx %>">
+                <input type="hidden" name="section_idx" value="<%= section[0].section_idx %>">
+                <input type="hidden" name="past_input" value="<%= section[0].section_idx %>">
+                
+                <div>
+                    <% for ( var i=0; i< count[1][0].survey_count; i++ ) { %>
+
+                    <% if (survey[i].survey_type == 1){ %>
+                    <div class="formContent">
+                        <div class="formExplain">
+                            <div class="formSurveyTitle">
+                                <%= survey[i].survey_title %>
+                            </div>
+                            <div class="">
+                                <span><%= survey[i].survey_text %></span>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                    <% if (survey[i].survey_type == 2){ %>
+                    <div class="formContent">
+                        <div class="formSurvey">
+                            <div class="formSurveyTitle">
+                                <%= survey[i].survey_title %>
+                            </div>
+                            <div class="formSurveyChoice">
+                                <% survey.forEach( function(element){ 
+                                    if ( element.survey_title == survey[1].survey_title){ %>
+                                <div class="formSurveyChoiceRow form-inline form-group">
+                                    <label for="i1" class="">
+                                        <div id="i1" class="formSurveyChoiceRadio">
+                                            <div class="formSurveyChoiceRadioOuter"></div>
+                                            <input type="hidden" name="">
+                                        </div>
+                                        <div class="formSurveyChoicText">
+                                            <span><%= element.survey_text %></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                <% }}) %>
+                            </div>
+                        </div>
+
+                        <% } %>
+                        <% if (survey[i].survey_type == 3){ %>
+                        <div class="formSurvey">
+                            <div class="formSurveyTitle">
+                                <%= survey[i].survey_title %>
+                            </div>
+
+                            <div class="formSurveyQuestion">
+                                <div class="formSurveyQuestionText">
+                                    <textarea class="formSurveyQuestionTextInput" name="text_test" onkeydown="textarea_Resize(this)" onkeyup="textarea_Resize(this)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+                    <% } %>
+                    <div class="formMove">
+                        <% if ( section[0].section_order == 1 ) { %>
+                        <input type="submit" class="btn btn-light" value="Next">
+                        <% } else if ( section[0].section_order < count[0][0].section_count ) { %>
+                        <a href="<%=section[0].section_order - 1%>"><input type="button" class="btn btn-light" value="Back"></a> 
+                        <input type="submit" class="btn btn-light" value="Next">
+                        <% }
+                            else {%>
+                        <a href="<%=section[0].section_order - 1%>"><input type="button" class="btn btn-light" value="Back"></a> 
+                        <input type="submit" class="btn btn-light" value="Submit">
+                        <% } %>
+                    </div>
+                    
+
+
+                    <!-- 하단 저작권 안내문구 -->
+                    <div class="footer-text">
+                        <span>해당 소프트웨어의 지적재산권은 (주)컬처메이커스에 있으며 ...</span>
+                    </div>
+                    <div class="footer-image">
+                        <img src="/image/logo.png" width="100px">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
+
