@@ -7,12 +7,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="/style/form.css">
 
-        <script>
-            function textarea_Resize(obj){
-                obj.style.height = "1px";
-                obj.style.height = (12+obj.scrollHeight)+"px";
-            }
-        </script>
+        <script src="/script/form.js"></script>
     </head>
     <body>
         <div class="container">
@@ -21,15 +16,16 @@
             </div>
             
             <!-- 설명 시작 및 조사 항목 나열 -->
-            <form action="<%= ( section[0].section_idx ==  count[0][0].section_count ) ? '/submitend' : '/form/'+ (section[0].section_idx + 1) %>" method="POST">
+            <form action="<%= ( section[0].section_idx ==  count[0][0].section_count ) ? '/submitend' : '/form/' + form[0].form_idx + '/' + (section[0].section_idx + 1) %>" method="POST">
                 <input type="hidden" name="form_idx" value="<%= form[0].form_idx %>">
                 <input type="hidden" name="section_idx" value="<%= section[0].section_idx %>">
-                <input type="hidden" name="past_input" value="<%= section[0].section_idx %>">
+                <input type="hidden" name="past_input" value="<%= past_input %>">
                 
                 <div>
                     <% for ( var i=0; i< count[1][0].survey_count; i++ ) { %>
 
                     <% if (survey[i].survey_type == 1){ %>
+                    <!-- 폼 타입 : 설명 -->
                     <div class="formContent">
                         <div class="formExplain">
                             <div class="formSurveyTitle">
@@ -42,6 +38,7 @@
                     </div>
                     <% } %>
                     <% if (survey[i].survey_type == 2){ %>
+                    <!-- 폼 타입 : 선택지 -->
                     <div class="formContent">
                         <div class="formSurvey">
                             <div class="formSurveyTitle">
@@ -52,9 +49,9 @@
                                     if ( element.survey_title == survey[1].survey_title){ %>
                                 <div class="formSurveyChoiceRow form-inline form-group">
                                     <label for="i1" class="">
-                                        <div id="i1" class="formSurveyChoiceRadio">
-                                            <div class="formSurveyChoiceRadioOuter"></div>
-                                            <input type="hidden" name="">
+                                        <div id="i1" class="formSurveyChoiceRadioOuter" onclick="formRadioCheck(this)">
+                                            <div class="formRadioisCheck"></div>
+                                            <input type="hidden" class="radio" name="survey<%= element.survey_order %>" value="">
                                         </div>
                                         <div class="formSurveyChoicText">
                                             <span><%= element.survey_text %></span>
@@ -67,6 +64,7 @@
 
                         <% } %>
                         <% if (survey[i].survey_type == 3){ %>
+                        <!-- 폼 타입 : 서술형 -->
                         <div class="formSurvey">
                             <div class="formSurveyTitle">
                                 <%= survey[i].survey_title %>
@@ -74,7 +72,7 @@
 
                             <div class="formSurveyQuestion">
                                 <div class="formSurveyQuestionText">
-                                    <textarea class="formSurveyQuestionTextInput" name="text_test" onkeydown="textarea_Resize(this)" onkeyup="textarea_Resize(this)"></textarea>
+                                    <textarea class="formSurveyQuestionTextInput" name="survey<%= survey[i].survey_order %>" onkeydown="textarea_Resize(this)" onkeyup="textarea_Resize(this)"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -86,11 +84,11 @@
                         <% if ( section[0].section_order == 1 ) { %>
                         <input type="submit" class="btn btn-light" value="Next">
                         <% } else if ( section[0].section_order < count[0][0].section_count ) { %>
-                        <a href="<%=section[0].section_order - 1%>"><input type="button" class="btn btn-light" value="Back"></a> 
+                        <a href="javascript:history.back()"><input type="button" class="btn btn-light" value="Back" ></a>
                         <input type="submit" class="btn btn-light" value="Next">
                         <% }
                             else {%>
-                        <a href="<%=section[0].section_order - 1%>"><input type="button" class="btn btn-light" value="Back"></a> 
+                        <a href="javascript:history.back()"><input type="button" class="btn btn-light" value="Back" ></a>
                         <input type="submit" class="btn btn-light" value="Submit">
                         <% } %>
                     </div>

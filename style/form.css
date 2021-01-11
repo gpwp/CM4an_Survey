@@ -58,19 +58,29 @@ label {
     margin-bottom: 20px;
 }
 
-.formSurveyChoice {
-
-}
-
 /* 라디오버튼 */
 .formSurveyChoiceRadio {
     /* background-color: black; */
-    width: 20px;
+    /* width: 20px;
     height: 20px;
+    border-radius: 50%; */
+}
+
+/* 라디오 버튼 체크시 가운데 원 */
+.formRadioisChecked {
+    margin-top: 3px;
+    margin-left: 3px;
+    background-color: black;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
 }
 
-.formSurveyChoiceRadio:hover {
+input.radio {
+    visibility:hidden
+}
+
+.formSurveyChoiceRadioOuter:hover {
     box-shadow: 0 0px 10px rgba(0, 0, 0, 0.8);
 }
 
